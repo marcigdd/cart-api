@@ -1,11 +1,7 @@
-import {
-  APIGatewayProxyEvent,
-  APIGatewayProxyHandler,
-  Context,
-} from 'aws-lambda';
+import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 
-import debug from 'debug';
-import express from 'express';
+import * as debug from 'debug';
+import * as express from 'express';
 import { Server } from 'http';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';

@@ -1,0 +1,13 @@
+Resources:
+  NestJsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/src
+      Handler: lambda.handler
+      Runtime: nodejs20.x
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /cart
+            Method: get
