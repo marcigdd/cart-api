@@ -1,21 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-
+import { ExpressAdapter } from '@nestjs/platform-express';
+import * as serverlessHttp from 'serverless-http';
 import * as helmet from 'helmet';
-
 import { AppModule } from './app.module';
 
-const port = process.env.PORT || 4000;
-
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
+async function createApp() {
+  const app = await NestFactory.create(AppModule, new ExpressAdapter());
   app.enableCors({
     origin: (req, callback) => callback(null, true),
   });
   app.use(helmet());
-
-  await app.listen(port);
+  await app.init(); // Use app.init() instead of app.listen() for Lambda
+  return app;
 }
-bootstrap().then(() => {
-  console.log('App is running on %s port', port);
-});
+
+// Export the handler function for AWS Lambda
+exports.handler = serverlessHttp(createApp);
