@@ -23,7 +23,9 @@
     "@aws-cdk/aws-apigateway": "^1.204.0",
     "@aws-cdk/aws-lambda-nodejs": "^1.204.0",
     "@aws-cdk/core": "^1.204.0",
+    "@aws-sdk/client-secrets-manager": "^3.583.0",
     "aws-cdk-lib": "2.136.0",
+    "aws-sdk": "^2.1629.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
   }
